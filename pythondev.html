@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonia Chalia | Python Developer Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #306998;
+            --secondary: #FFD43B;
+            --dark: #0A192F;
+            --light: #F8F9FA;
+            --gray: #8892B0;
+            --success: #4ADE80;
+            --code-bg: #1E293B;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        code, pre {
+            font-family: 'Fira Code', monospace;
+        }
+        
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background: var(--primary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--primary);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #25567D;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+            color: #333;
+        }
+        
+        .btn-secondary:hover {
+            background: #E6C231;
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding-top: 150px;
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+        }
+        
+        .hero-content {
+            flex: 1;
+            padding-right: 30px;
+        }
+        
+        .hero-code {
+            flex: 1;
+            background: var(--code-bg);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .hero h1 span {
+            color: var(--primary);
+        }
+        
+        .hero h2 {
+            font-size: 1.8rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+        
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .code-header h3 {
+            font-size: 1.2rem;
+        }
+        
+        .code-body {
+            background: #0F172A;
+            border-radius: 5px;
+            padding: 20px;
+            font-family: 'Fira Code', monospace;
+            color: #E2E8F0;
+            overflow-x: auto;
+        }
+        
+        .keyword {
+            color: #F472B6;
+        }
+        
+        .function {
+            color: #60A5FA;
+        }
+        
+        .string {
+            color: #34D399;
+        }
+        
+        .comment {
+            color: #94A3B8;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .skill-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            border-left: 5px solid var(--primary);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Technical Expertise Grid */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .expertise-category {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .expertise-category:hover {
+            transform: translateY(-5px);
+        }
+        
+        .expertise-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .expertise-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 20px;
+        }
+        
+        .expertise-list {
+            list-style: none;
+        }
+        
+        .expertise-list li {
+            margin-bottom: 10px;
+            padding-left: 10px;
+            position: relative;
+        }
+        
+        .expertise-list li:before {
+            content: "▸";
+            color: var(--primary);
+            position: absolute;
+            left: -10px;
+        }
+        
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-img {
+            height: 200px;
+            width: 100%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .project-content {
+            padding: 25px;
+        }
+        
+        .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        
+        .project-tag {
+            background: #E0F2FE;
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        /* Code Runner Section */
+        .code-runner {
+            background: var(--code-bg);
+            color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 50px;
+            box-shadow: var(--shadow);
+        }
+        
+        .runner-header {
+            background: #0F172A;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .runner-header h3 {
+            font-size: 1.2rem;
+        }
+        
+        .runner-body {
+            display: flex;
+            flex-direction: column;
+            height: 400px;
+        }
+        
+        .code-editor {
+            flex: 1;
+            display: flex;
+        }
+        
+        .line-numbers {
+            background: #0F172A;
+            color: #94A3B8;
+            padding: 15px 10px;
+            text-align: right;
+            font-family: 'Fira Code', monospace;
+            line-height: 1.5;
+            user-select: none;
+        }
+        
+        .code-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #E2E8F0;
+            font-family: 'Fira Code', monospace;
+            padding: 15px;
+            resize: none;
+            line-height: 1.5;
+        }
+        
+        .code-input:focus {
+            outline: none;
+        }
+        
+        .runner-output {
+            background: #0F172A;
+            border-top: 1px solid #334155;
+            padding: 15px;
+            font-family: 'Fira Code', monospace;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        
+        .runner-controls {
+            padding: 15px 20px;
+            background: #0F172A;
+            border-top: 1px solid #334155;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+            margin-top: 50px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 20px;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #CBD5E1;
+            border-radius: 5px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .social-links {
+            display: flex;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-left: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 120px;
+            }
+            
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 50px;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: left 0.3s ease;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 0 0 30px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .social-links {
+                margin-top: 30px;
+            }
+            
+            .social-links a:first-child {
+                margin-left: 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .projects-container,
+            .skills-container,
+            .expertise-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Python Specific Styling */
+        .python-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .python-badge.yellow {
+            background: var(--secondary);
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fab fa-python"></i>SoniaChalia
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#expertise">Expertise</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#code">Code Runner</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Hi, I'm <span>Sonia Chalia</span></h1>
+                <h2>Python Developer</h2>
+                <p>I am a Python developer skilled in building efficient scripts, web applications, and data-driven solutions. I love leveraging Python's simplicity and power to solve problems and create meaningful projects.</p>
+                <div style="margin-bottom: 2rem;">
+                    <span class="python-badge">Python 3.9+</span>
+                    <span class="python-badge yellow">Tkinter</span>
+                    <span class="python-badge">Flask</span>
+                    <span class="python-badge yellow">Data Analysis</span>
+                    <span class="python-badge">Automation</span>
+                    <span class="python-badge yellow">APIs</span>
+                </div>
+                <a href="#expertise" class="btn">View My Expertise</a>
+                <a href="#code" class="btn btn-secondary" style="margin-left: 15px;">Try Code Runner</a>
+            </div>
+            <div class="hero-code fade-in">
+                <div class="code-header">
+                    <h3><i class="fab fa-python"></i> portfolio_project.py</h3>
+                    <span>Python 3.11</span>
+                </div>
+                <div class="code-body">
+                    <pre><code><span class="keyword">class</span> <span class="function">ProjectPortfolio</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="keyword">self</span>):
+        <span class="keyword">self</span>.projects = {
+            <span class="string">"weather_app"</span>: <span class="string">"Real-time weather data fetcher"</span>,
+            <span class="string">"sudoku_game"</span>: <span class="string">"Interactive puzzle solver"</span>,
+            <span class="string">"scientific_calculator"</span>: <span class="string">"Advanced math operations"</span>,
+            <span class="string">"mario_game"</span>: <span class="string">"Classic game recreation"</span>,
+            <span class="string">"email_sender"</span>: <span class="string">"Automated email system"</span>
+        }
+    
+    <span class="keyword">def</span> <span class="function">show_projects</span>(<span class="keyword">self</span>):
+        <span class="keyword">for</span> project, description <span class="keyword">in</span> <span class="keyword">self</span>.projects.items():
+            <span class="function">print</span>(<span class="string">f"{project.replace('_', ' ').title()}: {description}"</span>)
+    
+<span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:
+    portfolio = <span class="function">ProjectPortfolio</span>()
+    portfolio.<span class="function">show_projects</span>()
+    <span class="function">print</span>(<span class="string">"\nTotal Projects: 5 + Creative Projects"</span>)</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title fade-in">Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3>Python Development</h3>
+                    <p>Skilled in building efficient Python scripts, desktop applications using Tkinter, and web applications with Flask. Experienced in data analysis, automation, and API integration.</p>
+                    <div style="margin-top: 15px;">
+                        <span class="python-badge">Python Scripting</span>
+                        <span class="python-badge yellow">Tkinter GUI</span>
+                        <span class="python-badge">Flask</span>
+                    </div>
+                </div>
+                
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Game Development</h3>
+                    <p>Experience in developing interactive games using Python libraries. Created classic game recreations like Mario and puzzle games like Sudoku with graphical interfaces.</p>
+                    <div style="margin-top: 15px;">
+                        <span class="python-badge">Pygame</span>
+                        <span class="python-badge yellow">Game Logic</span>
+                        <span class="python-badge">UI/UX</span>
+                    </div>
+                </div>
+                
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Practical Applications</h3>
+                    <p>Building practical tools and applications including weather apps, scientific calculators, email senders, and automation scripts that solve real-world problems.</p>
+                    <div style="margin-top: 15px;">
+                        <span class="python-badge">APIs</span>
+                        <span class="python-badge yellow">Automation</span>
+                        <span class="python-badge">Tools</span>
+                    </div>
+                </div>
+                
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Creative Projects</h3>
+                    <p>Creative coding projects including ASCII art generators, portfolio designs, and practical file management systems that showcase Python's versatility beyond traditional programming.</p>
+                    <div style="margin-top: 15px;">
+                        <span class="python-badge">ASCII Art</span>
+                        <span class="python-badge yellow">Design</span>
+                        <span class="python-badge">Creativity</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Expertise Section -->
+    <section id="expertise" style="background: #f1f5f9;">
+        <div class="container">
+            <h2 class="section-title fade-in">Technical Expertise</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; color: var(--gray); font-size: 1.1rem;">
+                A comprehensive showcase of my Python development capabilities, project portfolio, and practical application skills
+            </p>
+            
+            <div class="expertise-grid">
+                <div class="expertise-category fade-in">
+                    <div class="expertise-header">
+                        <div class="expertise-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <div>
+                            <h3>Python Projects</h3>
+                            <p>Hands-on application development</p>
+                        </div>
+                    </div>
+                    <ul class="expertise-list">
+                        <li><strong>Weather App</strong>: Real-time weather data fetcher with API integration</li>
+                        <li><strong>Sudoku Game</strong>: Interactive puzzle solver with backtracking algorithm</li>
+                        <li><strong>Scientific Calculator</strong>: Advanced mathematical operations with GUI</li>
+                        <li><strong>Mario Game</strong>: Classic game recreation using Pygame library</li>
+                        <li><strong>Email Sender</strong>: Automated email system with SMTP integration</li>
+                    </ul>
+                    <div style="margin-top: 20px;">
+                        <span class="python-badge">Tkinter</span>
+                        <span class="python-badge yellow">Pygame</span>
+                        <span class="python-badge">SMTP</span>
+                    </div>
+                </div>
+                
+                <div class="expertise-category fade-in">
+                    <div class="expertise-header">
+                        <div class="expertise-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div>
+                            <h3>Creative & Practical Projects</h3>
+                            <p>Innovative Python implementations</p>
+                        </div>
+                    </div>
+                    <ul class="expertise-list">
+                        <li><strong>ASCII Smiley Face Generator</strong>: Creative character-based art creation</li>
+                        <li><strong>Practical File Front Page</strong>: Professional document design automation</li>
+                        <li><strong>Portfolio Website</strong>: Interactive developer showcase</li>
+                        <li><strong>Data Visualization Tools</strong>: Charts and graphs generation</li>
+                        <li><strong>Automated Reports</strong>: PDF and document generation</li>
+                    </ul>
+                    <div style="margin-top: 20px;">
+                        <span class="python-badge">ASCII Art</span>
+                        <span class="python-badge yellow">Automation</span>
+                        <span class="python-badge">Design</span>
+                    </div>
+                </div>
+                
+                <div class="expertise-category fade-in">
+                    <div class="expertise-header">
+                        <div class="expertise-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div>
+                            <h3>Development Skills</h3>
+                            <p>Professional development capabilities</p>
+                        </div>
+                    </div>
+                    <ul class="expertise-list">
+                        <li><strong>Python Developer Portfolio</strong>: Comprehensive project showcase</li>
+                        <li><strong>Graphic User Interface (GUI) Development</strong>: Tkinter-based applications</li>
+                        <li><strong>Web Application Development</strong>: Flask-based solutions</li>
+                        <li><strong>Data Processing & Analysis</strong>: Pandas and NumPy implementation</li>
+                        <li><strong>API Integration</strong>: Third-party service connectivity</li>
+                    </ul>
+                    <div style="margin-top: 20px;">
+                        <span class="python-badge">GUI Development</span>
+                        <span class="python-badge yellow">Web Dev</span>
+                        <span class="python-badge">API Integration</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#projects" class="btn">View Detailed Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title fade-in">Detailed Python Projects</h2>
+            <div class="projects-container">
+                <div class="project-card fade-in">
+                    <div class="project-img" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Weather Application</h3>
+                        <p>A real-time weather application that fetches current weather data from APIs, displays temperature, humidity, and forecasts with a clean graphical interface.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Tkinter</span>
+                            <span class="project-tag">Weather API</span>
+                            <span class="project-tag">JSON</span>
+                            <span class="project-tag">GUI</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <div class="project-img" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-th"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Sudoku Game</h3>
+                        <p>An interactive Sudoku game with puzzle generation, solving algorithms, and validation logic. Features multiple difficulty levels and a timer.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Tkinter</span>
+                            <span class="project-tag">Algorithms</span>
+                            <span class="project-tag">Game Logic</span>
+                            <span class="project-tag">Backtracking</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <div class="project-img" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Scientific Calculator</h3>
+                        <p>A feature-rich scientific calculator with advanced mathematical functions including trigonometric operations, logarithms, exponents, and memory functions.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Tkinter</span>
+                            <span class="project-tag">Math Library</span>
+                            <span class="project-tag">GUI</span>
+                            <span class="project-tag">Functions</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <div class="project-img" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Mario Game</h3>
+                        <p>A recreation of the classic Mario game using Pygame with character movement, obstacle detection, scoring system, and multiple levels.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Pygame</span>
+                            <span class="project-tag">Game Dev</span>
+                            <span class="project-tag">Graphics</span>
+                            <span class="project-tag">Animation</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <div class="project-img" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Email Sender Application</h3>
+                        <p>An automated email sending application with support for multiple recipients, attachments, HTML templates, and scheduled sending.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">SMTP</span>
+                            <span class="project-tag">Automation</span>
+                            <span class="project-tag">Tkinter</span>
+                            <span class="project-tag">Email API</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <div class="project-img" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Creative & Portfolio Projects</h3>
+                        <p>Collection of creative projects including ASCII smiley face generator, practical file front page design, and this Python developer portfolio website.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">ASCII Art</span>
+                            <span class="project-tag">Portfolio</span>
+                            <span class="project-tag">Creative Coding</span>
+                            <span class="project-tag">Web Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Code Runner Section -->
+    <section id="code" style="background: #f1f5f9;">
+        <div class="container">
+            <h2 class="section-title fade-in">Interactive Python Code Runner</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 30px; color: var(--gray);">
+                Try out Python code directly in your browser. This interactive runner simulates Python 3.11 execution.
+            </p>
+            
+            <div class="code-runner fade-in">
+                <div class="runner-header">
+                    <h3><i class="fab fa-python"></i> Python Code Runner</h3>
+                    <span>Python 3.11 Simulation</span>
+                </div>
+                
+                <div class="runner-body">
+                    <div class="code-editor">
+                        <div class="line-numbers" id="lineNumbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15</div>
+                        <textarea class="code-input" id="codeInput" placeholder="Write your Python code here..."># Welcome to Sonia's Python Code Runner!
+# Try running this example from my projects
+
+def create_smiley_face():
+    """Create an ASCII smiley face"""
+    smiley = [
+        "  *****  ",
+        " *     * ",
+        "*  O O  *",
+        "*   ^   *",
+        "*  \\_/  *",
+        " *     * ",
+        "  *****  "
+    ]
+    return "\n".join(smiley)
+
+def calculate_circle_area(radius):
+    """Calculate area of a circle"""
+    import math
+    return math.pi * radius ** 2
+
+# Print the smiley face
+print("My ASCII Art Project:")
+print(create_smiley_face())
+
+# Calculate circle area
+radius = 5
+area = calculate_circle_area(radius)
+print(f"\nArea of circle with radius {radius}: {area:.2f}")
+
+# List of my Python projects
+projects = ["Weather App", "Sudoku Game", "Scientific Calculator", 
+            "Mario Game", "Email Sender", "Creative Projects"]
+print(f"\nTotal Python Projects: {len(projects)}")</textarea>
+                    </div>
+                    
+                    <div class="runner-output" id="codeOutput">
+                        <div style="color: #94A3B8;">Output will appear here after running the code...</div>
+                    </div>
+                </div>
+                
+                <div class="runner-controls">
+                    <button class="btn btn-secondary" id="runCode">
+                        <i class="fas fa-play"></i> Run Code
+                    </button>
+                    <button class="btn" id="resetCode" style="background: #64748B;">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                    <div>
+                        <button class="btn" id="example1" style="padding: 8px 15px; font-size: 0.9rem; margin-right: 10px;">
+                            Weather App
+                        </button>
+                        <button class="btn btn-secondary" id="example2" style="padding: 8px 15px; font-size: 0.9rem;">
+                            Sudoku Solver
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 30px; text-align: center;">
+                <p style="color: var(--gray); font-size: 0.9rem;">
+                    <i class="fas fa-info-circle"></i> This is a simulated Python environment. For security reasons, it doesn't execute arbitrary code but demonstrates Python functionality.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-info fade-in">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>sonia.chalia@example.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div>
+                            <h3>GitHub</h3>
+                            <p>github.com/soniachalia</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div>
+                            <h3>LinkedIn</h3>
+                            <p>linkedin.com/in/sonia-chalia</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div>
+                            <h3>Portfolio</h3>
+                            <p>soniachalia.github.io</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form fade-in">
+                    <form id="contactForm">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="text" placeholder="Subject" required>
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <a href="#" class="logo" style="color: white;">
+                        <i class="fab fa-python"></i>SoniaChalia
+                    </a>
+                    <p style="margin-top: 15px; max-width: 400px; color: rgba(255, 255, 255, 0.8);">
+                        Python developer passionate about creating efficient scripts, practical applications, and creative projects that solve real-world problems.
+                    </p>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-codepen"></i></a>
+                    <a href="#"><i class="fab fa-python"></i></a>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Sonia Chalia | Python Developer Portfolio. All rights reserved. | Made with <i class="fas fa-heart" style="color: #FF6B6B;"></i> and Python</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '0';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.padding = '';
+                header.style.boxShadow = '';
+            }
+        });
+        
+        // Scroll animation
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const appearOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            appearOnScroll.observe(element);
+        });
+        
+        // Code Runner Functionality
+        const codeInput = document.getElementById('codeInput');
+        const codeOutput = document.getElementById('codeOutput');
+        const lineNumbers = document.getElementById('lineNumbers');
+        const runCodeBtn = document.getElementById('runCode');
+        const resetCodeBtn = document.getElementById('resetCode');
+        const example1Btn = document.getElementById('example1');
+        const example2Btn = document.getElementById('example2');
+        
+        // Update line numbers when code changes
+        codeInput.addEventListener('input', updateLineNumbers);
+        
+        function updateLineNumbers() {
+            const lines = codeInput.value.split('\n').length;
+            let numbers = '';
+            for (let i = 1; i <= Math.max(lines, 15); i++) {
+                numbers += i + '<br>';
+            }
+            lineNumbers.innerHTML = numbers;
+        }
+        
+        // Initialize line numbers
+        updateLineNumbers();
+        
+        // Python execution simulation
+        function simulatePythonExecution(code) {
+            const output = [];
+            
+            // Simple simulation of print statements
+            const printMatches = code.match(/print\(([^)]+)\)/g);
+            if (printMatches) {
+                printMatches.forEach(match => {
+                    try {
+                        const content = match.substring(6, match.length - 1);
+                        
+                        if (content.includes('f"') || content.includes("f'")) {
+                            let result = content;
+                            
+                            // Handle ASCII art
+                            if (code.includes('create_smiley_face()')) {
+                                if (content.includes('"My ASCII Art Project:"')) {
+                                    output.push("My ASCII Art Project:");
+                                    output.push("  *****  ");
+                                    output.push(" *     * ");
+                                    output.push("*  O O  *");
+                                    output.push("*   ^   *");
+                                    output.push("*  \\_/  *");
+                                    output.push(" *     * ");
+                                    output.push("  *****  ");
+                                    return;
+                                }
+                            }
+                            
+                            if (code.includes('calculate_circle_area')) {
+                                result = result.replace('{area:.2f}', '78.54');
+                            }
+                            
+                            if (code.includes('Total Python Projects')) {
+                                result = result.replace('{len(projects)}', '6');
+                            }
+                            
+                            result = result.replace(/f['"]/, '').replace(/['"]$/, '');
+                            output.push(result);
+                        } else {
+                            const cleanContent = content.replace(/^['"]|['"]$/g, '');
+                            output.push(cleanContent);
+                        }
+                    } catch (e) {
+                        output.push("Error evaluating print statement");
+                    }
+                });
+            }
+            
+            return output.length > 0 ? output.join('\n') : "Code executed (no output)";
+        }
+        
+        // Run code button
+        runCodeBtn.addEventListener('click', () => {
+            const code = codeInput.value;
+            codeOutput.innerHTML = '<div style="color: #94A3B8;">Executing Python code...</div>';
+            
+            setTimeout(() => {
+                const result = simulatePythonExecution(code);
+                codeOutput.innerHTML = `<div style="color: #34D399;">${result.replace(/\n/g, '<br>')}</div>`;
+            }, 500);
+        });
+        
+        // Reset button
+        resetCodeBtn.addEventListener('click', () => {
+            codeInput.value = `# Welcome to Sonia's Python Code Runner!
+# Try running this example from my projects
+
+def create_smiley_face():
+    """Create an ASCII smiley face"""
+    smiley = [
+        "  *****  ",
+        " *     * ",
+        "*  O O  *",
+        "*   ^   *",
+        "*  \\_/  *",
+        " *     * ",
+        "  *****  "
+    ]
+    return "\n".join(smiley)
+
+def calculate_circle_area(radius):
+    """Calculate area of a circle"""
+    import math
+    return math.pi * radius ** 2
+
+# Print the smiley face
+print("My ASCII Art Project:")
+print(create_smiley_face())
+
+# Calculate circle area
+radius = 5
+area = calculate_circle_area(radius)
+print(f"\nArea of circle with radius {radius}: {area:.2f}")
+
+# List of my Python projects
+projects = ["Weather App", "Sudoku Game", "Scientific Calculator", 
+            "Mario Game", "Email Sender", "Creative Projects"]
+print(f"\nTotal Python Projects: {len(projects)}")`;
+            updateLineNumbers();
+            codeOutput.innerHTML = '<div style="color: #94A3B8;">Output will appear here after running the code...</div>';
+        });
+        
+        // Example 1: Weather App Example
+        example1Btn.addEventListener('click', () => {
+            codeInput.value = `# Weather App Example - From My Projects
+
+class WeatherApp:
+    def __init__(self):
+        self.cities = []
+    
+    def add_city(self, city):
+        self.cities.append(city)
+        return f"Added {city} to weather tracking"
+    
+    def get_weather(self, city):
+        # Simulated weather data
+        import random
+        weather_data = {
+            "temperature": random.randint(15, 35),
+            "humidity": random.randint(30, 90),
+            "condition": random.choice(["Sunny", "Cloudy", "Rainy", "Snowy"]),
+            "wind_speed": random.randint(5, 25)
+        }
+        return weather_data
+    
+    def display_forecast(self, city, days=3):
+        print(f"Weather Forecast for {city}:")
+        for day in range(days):
+            weather = self.get_weather(city)
+            print(f"Day {day+1}: {weather['temperature']}°C, {weather['condition']}")
+
+# Create weather app instance
+app = WeatherApp()
+
+# Add some cities
+print(app.add_city("New Delhi"))
+print(app.add_city("Mumbai"))
+
+# Get current weather
+print("\\nCurrent Weather in New Delhi:")
+delhi_weather = app.get_weather("New Delhi")
+for key, value in delhi_weather.items():
+    print(f"{key.title()}: {value}")
+
+# Display 3-day forecast
+print("\\n3-Day Forecast:")
+app.display_forecast("Mumbai", 3)
+
+print("\\nThis is part of my Weather App project!")`;
+            updateLineNumbers();
+        });
+        
+        // Example 2: Sudoku Solver Example
+        example2Btn.addEventListener('click', () => {
+            codeInput.value = `# Sudoku Solver - From My Projects
+
+def print_board(board):
+    """Print Sudoku board nicely"""
+    for i in range(9):
+        if i % 3 == 0 and i != 0:
+            print("-" * 21)
+        for j in range(9):
+            if j % 3 == 0 and j != 0:
+                print(" | ", end="")
+            print(board[i][j] if board[i][j] != 0 else ".", end=" ")
+        print()
+
+def find_empty(board):
+    """Find empty cell (0)"""
+    for i in range(9):
+        for j in range(9):
+            if board[i][j] == 0:
+                return (i, j)
+    return None
+
+def is_valid(board, num, pos):
+    """Check if number is valid in position"""
+    row, col = pos
+    
+    # Check row
+    for j in range(9):
+        if board[row][j] == num and col != j:
+            return False
+    
+    # Check column
+    for i in range(9):
+        if board[i][col] == num and row != i:
+            return False
+    
+    # Check 3x3 box
+    box_x = col // 3
+    box_y = row // 3
+    
+    for i in range(box_y*3, box_y*3 + 3):
+        for j in range(box_x*3, box_x*3 + 3):
+            if board[i][j] == num and (i,j) != pos:
+                return False
+    
+    return True
+
+def solve(board):
+    """Solve Sudoku using backtracking"""
+    empty = find_empty(board)
+    if not empty:
+        return True
+    
+    row, col = empty
+    
+    for num in range(1, 10):
+        if is_valid(board, num, (row, col)):
+            board[row][col] = num
+            
+            if solve(board):
+                return True
+            
+            board[row][col] = 0
+    
+    return False
+
+# Example Sudoku puzzle (0 = empty)
+puzzle = [
+    [5, 3, 0, 0, 7, 0, 0, 0, 0],
+    [6, 0, 0, 1, 9, 5, 0, 0, 0],
+    [0, 9, 8, 0, 0, 0, 0, 6, 0],
+    [8, 0, 0, 0, 6, 0, 0, 0, 3],
+    [4, 0, 0, 8, 0, 3, 0, 0, 1],
+    [7, 0, 0, 0, 2, 0, 0, 0, 6],
+    [0, 6, 0, 0, 0, 0, 2, 8, 0],
+    [0, 0, 0, 4, 1, 9, 0, 0, 5],
+    [0, 0, 0, 0, 8, 0, 0, 7, 9]
+]
+
+print("Sudoku Puzzle:")
+print_board(puzzle)
+
+if solve(puzzle):
+    print("\\nSolved Sudoku:")
+    print_board(puzzle)
+else:
+    print("\\nNo solution exists")
+
+print("\\nThis algorithm is used in my Sudoku Game project!")`;
+            updateLineNumbers();
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = contactForm.querySelector('input[type="text"]').value;
+            const email = contactForm.querySelector('input[type="email"]').value;
+            
+            alert(`Thank you ${name}! Your message has been sent. I'll get back to you at ${email} soon.`);
+            
+            contactForm.reset();
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
